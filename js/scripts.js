@@ -1,3 +1,6 @@
+//TOMORROW: Create constructor for game rows, they'll work nicer as objects
+//Empty out gameboard and give pile to a new Player constructor
+
 //The game board will keep track of cards and victory
 function GameBoard () {
   this.pile = [];
