@@ -1,7 +1,3 @@
-function Player (){
-  this.cards[];
-}
-
 //The game board will keep track of cards and victory
 function GameBoard () {
   this.pile = [];
@@ -12,22 +8,32 @@ function GameBoard () {
   this.row5 = [];
   this.row6 = [];
   this.row7 = [];
-  this.heartsRow   = [];
-  this.diamondsRow = [];
-  this.spadesRow   = [];
-  this.clubsRow    = [];
+}
+//creates rows needed for winning
+function FoundationRows (){
+  this.foundationRow = [];
+  this.suit = "";
+}
+//Starts and defines a row
+FoundationRows.prototype.defineRow = function (card) {
+  if (this.foundationRow.length === 0 && card.number === 1) {
+    this.foundationRow.push(card);
+    this.suit = card.suit;
+    console.log(this.foundationRow[0]);
+  } else {console.log("NO");}
+}
+//adds card to rows
+FoundationRows.prototype.addToRow = function (card){
+  let numToSub = card.number - this.foundationRow.length;
+  if (numToSub === 1 && this.suit === card.suit){
+    this.foundationRow.push(card);
+    console.log(card);
+  } else {
+    console.log("NO");
+  }
+
 }
 
-GameBoard.prototype.checkSuitsRow = function (card){
-  if (this.heartsRow.length === 0) {
-    if (card.suit === "hearts" && card.number === 1) {
-      this.heartsRow.push(card);
-    } else if (card.number - heartsRow.last.number === 1){
-      this.heartsRow.push(card);
-    }
-  }
-  //player.cards[x]
-}
 
 //The card objects
 function Card (suit,number,shade){
@@ -49,14 +55,14 @@ function CardDeck () {
 CardDeck.prototype.initialize = function(){
   for (let x = 0; x < 52;x++){
     let y = x + 1;
-    if (x <= 13){
+    if (x <= 12){
       card = new Card("spades",y,"black");
       this.deck.push(card);
-    } else if (x <= 26 && x > 13) {
+    } else if (x <= 25 && x > 12) {
       card = new Card("hearts", y - 13, "red");
       this.deck.push(card);
-    } else if (x <= 39 && x > 26) {
-      card = new Card("diamond", y - 26, "red");
+    } else if (x <= 38 && x > 25) {
+      card = new Card("diamonds", y - 26, "red");
       this.deck.push(card);
     } else {
       card = new Card("clubs", y - 39, "black");
@@ -68,7 +74,7 @@ CardDeck.prototype.initialize = function(){
 //puts the game board together
 CardDeck.prototype.startGame = function(gameboard){
   //loop to draw random card
-  for (let z = 1; z <= 28; z++) {
+  for (let z = 0; z <= 27; z++) {
     //generates random number to pull element/card from array
     let x = Math.floor(Math.random() * (this.deck.length - 1)) + 1;
     //pulledCard = the card drawn
@@ -76,13 +82,13 @@ CardDeck.prototype.startGame = function(gameboard){
     //deletes pulled card drom this.deck
     this.deck.splice(x, 1);
     //pushes pulled card to the appropriate row
-    if (z === 1 )        {gameboard.row1.push(pulledCard); }
-    if (z >= 2 && z <= 3 ) {gameboard.row2.push(pulledCard); }
-    if (z >= 4 && z <= 6 ) {gameboard.row3.push(pulledCard); }
-    if (z >= 7 && z <= 10 ) {gameboard.row4.push(pulledCard); }
-    if (z >= 11 && z<= 15 ) {gameboard.row5.push(pulledCard); }
-    if (z >= 16 && z <= 21 ) {gameboard.row6.push(pulledCard); }
-    if (z >= 22 && z <= 28 ) {gameboard.row7.push(pulledCard); }
+    if (z === 0 )        {gameboard.row1.push(pulledCard); }
+    if (z >= 1 && z <= 2 ) {gameboard.row2.push(pulledCard); }
+    if (z >= 3 && z <= 5 ) {gameboard.row3.push(pulledCard); }
+    if (z >= 6 && z <= 9 ) {gameboard.row4.push(pulledCard); }
+    if (z >= 10 && z<= 14 ) {gameboard.row5.push(pulledCard); }
+    if (z >= 15 && z <= 20 ) {gameboard.row6.push(pulledCard); }
+    if (z >= 21 && z <= 27 ) {gameboard.row7.push(pulledCard); }
   }
   //flips last card in row face up
   gameboard.row1[0].faceDown = false;
@@ -109,21 +115,8 @@ CardDeck.prototype.deal = function(gameboard){
 $(document).ready(function(){
   game = new GameBoard();
   solitaire = new CardDeck();
+  fRow1 = new FoundationRows();
   solitaire.initialize();
-  solitaire.startGame(game);
-  solitaire.deal(game);
-  // console.log(game.row1);
-  // console.log(game.row2);
-  // console.log(game.row3);
-  // console.log(game.row4);
-  // console.log(game.row5);
-  // console.log(game.row6);
-  // console.log(game.row7);
-  console.log(solitaire.deck);
-  solitaire.deal(game);
-  console.log(solitaire.deck);
-  solitaire.deal(game);
-  console.log(solitaire.deck);
-  solitaire.deal(game);
-
+  fRow1.defineRow(solitaire.deck[0]);
+  fRow1.addToRow(solitaire.deck[2]);
 })
