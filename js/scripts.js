@@ -1,4 +1,6 @@
 function GameBoard () {
+  this.dealDeck    = [];
+  this.discardPile = [];
   this.row1 = [];
   this.row2 = [];
   this.row3 = [];
@@ -6,6 +8,10 @@ function GameBoard () {
   this.row5 = [];
   this.row6 = [];
   this.row7 = [];
+  this.heartsRow   = [];
+  this.diamondsRow = [];
+  this.spadesRow   = [];
+  this.clubsRow    = [];
 }
 
 
@@ -13,7 +19,7 @@ function Card (suit,number,shade){
   this.suit = suit;
   this.number = number;
   this.shade = shade
-  if (this.number === 13){ this.ace = true;}
+  if (this.number === 1){ this.ace = true;}
   this.faceDown = true;
 }
 
@@ -39,10 +45,24 @@ CardDeck.prototype.initialize = function(){
   }
 }
 
+CardDeck.prototype.startGame = function(gameboard){
+  while (true) {
+    x = Math.floor(Math.random() * (this.deck.length - 1 + 1)) + 1;
+    let y = x + 1;
+    let pulledCard = this.deck.slice(x,y);
+    this.deck.splice(x, 1);
+    gameboard.row1.push(pulledCard);
+    break;
+  }
+}
+
 
 
 $(document).ready(function(){
+  game = new GameBoard();
   solitaire = new CardDeck();
   solitaire.initialize();
+  solitaire.startGame(game)
+  console.log(game.row1);
   console.log(solitaire.deck);
 })
