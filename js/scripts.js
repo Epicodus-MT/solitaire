@@ -128,21 +128,23 @@ CardDeck.prototype.startGame = function(){
   presentCards(playingCol5, 5);
   presentCards(playingCol6, 6);
   presentCards(playingCol7, 7);
+  $('#deck').append("<img class = 'card' src='cardimg/deck-haunted-house.png' />")
+
 }
 
 
 //Deals cards
 CardDeck.prototype.deal = function(){
   //Pulls a random card from the deck and leaves it in the player's pile
-  let x = Math.floor(Math.random() * (this.deck.length - 1)) + 1;
+  let x = Math.floor(Math.random() * (this.deck.length - 1));
   this.deck[x].faceDown = false;
   player.pile.push(this.deck[x]);
   this.deck.splice(x, 1);
-  console.log(player.pile);
+  //console.log(player.pile);
   //Displays dealt card to html by appending the appropriate img
   let lastCard = player.pile.length - 1;
   player.pile[lastCard].faceDown = false;
-  $('body').append("<img class = 'card' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' />")
+  $('#pile').append("<img class = 'card' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' />")
 }
 //Deals cards back to deck when deck is empty
 CardDeck.prototype.backToDeck = function () {
@@ -184,5 +186,12 @@ $(document).ready(function(){
   fRow4 = new FoundationRows();
   solitaire.initializeDeck();
   solitaire.startGame();
-  //solitaire.deal();
+  console.log(solitaire.deck);
+  console.log(player.pile);
+  $('#deck').click(function(){
+    solitaire.deal();
+    console.log("_________________");
+    console.log(solitaire.deck);
+    console.log(player.pile);
+  })
 });
