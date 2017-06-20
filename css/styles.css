@@ -1,13 +1,12 @@
-/*#suits {
-  background-color: yellow;
-}
-
-#playing-board {
-  background-color: red;
-}
-*/
 
 .card {
   height: 150px;
   width: 100px;
+  z-index: 2;
+}
+
+#playingCol1 {
+  z-index: 1;
+  /*background-color: green;
+  height: 400px;*/
 }

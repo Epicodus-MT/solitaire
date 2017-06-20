@@ -120,6 +120,7 @@ CardDeck.prototype.startGame = function(){
       }
     }
   }
+
   presentCards(playingCol1);
   presentCards(playingCol2);
   presentCards(playingCol3);
