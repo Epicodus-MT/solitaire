@@ -1,17 +1,33 @@
 //TOMORROW: Create constructor for game rows, they'll work nicer as objects
-//Empty out gameboard and give pile to a new Player constructor
+//Empty out player and give pile to a new Player constructor
 
 //The game board will keep track of cards and victory
-function GameBoard () {
+function Player () {
   this.pile = [];
-  this.row1 = [];
-  this.row2 = [];
-  this.row3 = [];
-  this.row4 = [];
-  this.row5 = [];
-  this.row6 = [];
-  this.row7 = [];
 }
+
+//Constructor for playing cols
+function PlayingCols (){
+  this.row = [];
+}
+
+PlayingCols.prototype.lastCardFlip = function (card) {
+  let lastCard = this.row.length - 1;
+  if (this.row[lastCard].faceDown === true) {
+    this.row[lastCard].faceDown === false;
+  }
+}
+
+PlayingCols.prototype.addToCol = function (card) {
+  let lastCard = this.row.length - 1;
+  if (this.row.length === 0) {
+    this.row.push(card);
+  } else if (this.row[lastCard].shade !== card.shade && this.row[lastCard].number - card.number === 1) {
+    this.row.push(card); 
+  }
+}
+
+
 //creates rows needed for winning
 function FoundationRows (){
   this.foundationRow = [];
@@ -75,7 +91,7 @@ CardDeck.prototype.initialize = function(){
 }
 
 //puts the game board together
-CardDeck.prototype.startGame = function(gameboard){
+CardDeck.prototype.startGame = function(){
   //loop to draw random card
   for (let z = 0; z <= 27; z++) {
     //generates random number to pull element/card from array
@@ -85,41 +101,56 @@ CardDeck.prototype.startGame = function(gameboard){
     //deletes pulled card drom this.deck
     this.deck.splice(x, 1);
     //pushes pulled card to the appropriate row
-    if (z === 0 )        {gameboard.row1.push(pulledCard); }
-    if (z >= 1 && z <= 2 ) {gameboard.row2.push(pulledCard); }
-    if (z >= 3 && z <= 5 ) {gameboard.row3.push(pulledCard); }
-    if (z >= 6 && z <= 9 ) {gameboard.row4.push(pulledCard); }
-    if (z >= 10 && z<= 14 ) {gameboard.row5.push(pulledCard); }
-    if (z >= 15 && z <= 20 ) {gameboard.row6.push(pulledCard); }
-    if (z >= 21 && z <= 27 ) {gameboard.row7.push(pulledCard); }
+    if (z === 0 )        {playingCol1.row.push(pulledCard); }
+    if (z >= 1 && z <= 2 ) {playingCol2.row.push(pulledCard); }
+    if (z >= 3 && z <= 5 ) {playingCol3.row.push(pulledCard); }
+    if (z >= 6 && z <= 9 ) {playingCol4.row.push(pulledCard); }
+    if (z >= 10 && z<= 14 ) {playingCol5.row.push(pulledCard); }
+    if (z >= 15 && z <= 20 ) {playingCol6.row.push(pulledCard); }
+    if (z >= 21 && z <= 27 ) {playingCol7.row.push(pulledCard); }
   }
   //flips last card in row face up
-  gameboard.row1[0].faceDown = false;
-  gameboard.row2[1].faceDown = false;
-  gameboard.row3[2].faceDown = false;
-  gameboard.row4[3].faceDown = false;
-  gameboard.row5[4].faceDown = false;
-  gameboard.row6[5].faceDown = false;
-  gameboard.row7[6].faceDown = false;
+  playingCol1.row[0].faceDown = false;
+  playingCol2.row[1].faceDown = false;
+  playingCol3.row[2].faceDown = false;
+  playingCol4.row[3].faceDown = false;
+  playingCol5.row[4].faceDown = false;
+  playingCol6.row[5].faceDown = false;
+  playingCol7.row[6].faceDown = false;
 }
 
+
 //Deals cards
-CardDeck.prototype.deal = function(gameboard){
+CardDeck.prototype.deal = function(){
   let x = Math.floor(Math.random() * (this.deck.length - 1)) + 1;
-  this.deal[x].faceDown = false;
-  gameboard.pile.push(this.deck[x]);
+  this.deck[x].faceDown = false;
+  player.pile.push(this.deck[x]);
   this.deck.splice(x, 1);
-  console.log(gameboard.pile);
+  console.log(player.pile);
 }
 
 
 
 //console log testing
 $(document).ready(function(){
-  game = new GameBoard();
+  player = new Player();
   solitaire = new CardDeck();
+  playingCol1 = new PlayingCols();
+  playingCol2 = new PlayingCols();
+  playingCol3 = new PlayingCols();
+  playingCol4 = new PlayingCols();
+  playingCol5 = new PlayingCols();
+  playingCol6 = new PlayingCols();
+  playingCol7 = new PlayingCols();
   fRow1 = new FoundationRows();
+  fRow2 = new FoundationRows();
+  fRow3 = new FoundationRows();
+  fRow4 = new FoundationRows();
   solitaire.initialize();
   fRow1.defineRow(solitaire.deck[0]);
-  fRow1.addToRow(solitaire.deck[2]);
+  fRow1.addToRow(solitaire.deck[1]);
+  solitaire.deal();
+  solitaire.deal();
+  solitaire.deal();
+  solitaire.deal();
 })
