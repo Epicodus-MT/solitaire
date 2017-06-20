@@ -1,15 +1,15 @@
-# _Pizza Ordering Online Service_
+# _Retro Solitaire Webpage_
 
-#### _Brief Description: This is a web application that allows user to order a pizza online, June 16, 2017_
+#### _Brief Description: This is a web application that allows user to play solitaire online, June 22, 2017_
 
-#### By _**Mara Timberlake**_
+#### By _**Mara Timberlake, Saul, Lincoln and Yokke**_
 
 ## Description
-_A web application that where a user can order a pizza by choosing a size and between one or more individual toppings. After hitting the submit button, user will see final cost._
+_A web application that where a user can play a game of solitaire by dragging the cards to the correct position, or double clicking to place automatically._
 
-|Behavior - Plain English|Input|Output|
+|Behavior|Input|Output|
 |---|---|---|
-|User selects size and pizza toppings, then submits|Large - goat cheese and mushrooms pizza |current balance = 16.00|
+|User drags card to the correct location|King of spades to blank space on page|Position is set until moved again|
 
 ## Specifications
 
@@ -26,16 +26,10 @@ Within the repository you'll find the following directories and files:
 
 ```
 pizza-order/
+├── backupImg
 ├── css/
 │    ├── bootstrap.css
 │    └── styles.css
-├── img/
-│    ├── basil.png
-│    └── brings.jpg
-│    └── create-pizza.jpg
-│    └── left.png
-│    └── mushrooms2.png
-│    └── right.png
 ├── js/
 │    ├── jquery-3.2.1.js
 │    └── script.js
@@ -56,7 +50,7 @@ _No known bugs at this time_
 
 ## Support and contact details
 
-_For questions or feedback, please notify Mara Timberlake at maratimberlake@msn.com_
+_For questions or feedback, please notify Mara Timberlake at maratimberlake@msn.com, Saul at ..., Lincoln at ..., Yokke at ..._
 
 ## Technologies Used
 
@@ -66,4 +60,4 @@ _Languages used include HTML, CSS, and Javascript. Libraries used include Bootst
 
 *This software runs under the MIT license*
 
-Copyright (c) 2017 **_Mara Timberlake_**
+Copyright (c) 2017 **_Mara Timberlake, Saul, Lincoln, Yokke_**
