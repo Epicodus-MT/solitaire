@@ -109,13 +109,24 @@ CardDeck.prototype.startGame = function(){
     if (z >= 21 && z <= 27 ) {playingCol7.row.push(pulledCard); }
   }
   //flips last card in row face up
-  playingCol1.row[0].faceDown = false;
-  playingCol2.row[1].faceDown = false;
-  playingCol3.row[2].faceDown = false;
-  playingCol4.row[3].faceDown = false;
-  playingCol5.row[4].faceDown = false;
-  playingCol6.row[5].faceDown = false;
-  playingCol7.row[6].faceDown = false;
+  function presentCards (playingCol) {
+    let lastCard = playingCol.row.length - 1;
+    playingCol.row[lastCard].faceDown = false;
+    for (let x = 0; x < playingCol.row.length; x++){
+      if (playingCol.row[x].faceDown === true){
+          $('body').append("<img class = 'card' src='cardimg/deck-haunted-house.png' />")
+      } else {
+          $('body').append("<img class = 'card' src='cardimg/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".png' />")
+      }
+    }
+  }
+  presentCards(playingCol1);
+  presentCards(playingCol2);
+  presentCards(playingCol3);
+  presentCards(playingCol4);
+  presentCards(playingCol5);
+  presentCards(playingCol6);
+  presentCards(playingCol7);
 }
 
 
@@ -171,6 +182,6 @@ $(document).ready(function(){
   fRow3 = new FoundationRows();
   fRow4 = new FoundationRows();
   solitaire.initializeDeck();
-  solitaire.startGame
-  solitaire.deal();
+  solitaire.startGame();
+  //solitaire.deal();
 });
