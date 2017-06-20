@@ -70,7 +70,7 @@ function CardDeck () {
 
 //puts 52 card objects into a deck
 
-CardDeck.prototype.initialize = function(){
+CardDeck.prototype.initializeDeck = function(){
   for (let x = 0; x < 52;x++){
     let y = x + 1;
     if (x <= 12){
@@ -129,8 +129,8 @@ CardDeck.prototype.deal = function(){
   console.log(player.pile);
   //Displays dealt card to html by appending the appropriate img
   let lastCard = player.pile.length - 1;
+  player.pile[lastCard].faceDown = false;
   $('body').append("<img class = 'card' src='cardimg/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".png' />")
-
 }
 //Deals cards back to deck when deck is empty
 CardDeck.prototype.backToDeck = function () {
@@ -170,11 +170,7 @@ $(document).ready(function(){
   fRow2 = new FoundationRows();
   fRow3 = new FoundationRows();
   fRow4 = new FoundationRows();
-  solitaire.initialize();
-  fRow1.defineRow(solitaire.deck[0]);
-  fRow1.addToRow(solitaire.deck[1]);
-  solitaire.deal();
-  solitaire.deal();
-  solitaire.deal();
+  solitaire.initializeDeck();
+  solitaire.startGame
   solitaire.deal();
 });
