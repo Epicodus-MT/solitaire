@@ -121,11 +121,16 @@ CardDeck.prototype.startGame = function(){
 
 //Deals cards
 CardDeck.prototype.deal = function(){
+  //Pulls a random card from the deck and leaves it in the player's pile
   let x = Math.floor(Math.random() * (this.deck.length - 1)) + 1;
   this.deck[x].faceDown = false;
   player.pile.push(this.deck[x]);
   this.deck.splice(x, 1);
   console.log(player.pile);
+  //Displays dealt card to html by appending the appropriate img
+  let lastCard = player.pile.length - 1;
+  $('body').append("<img class = 'card' src='cardimg/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".png' />")
+
 }
 //Deals cards back to deck when deck is empty
 CardDeck.prototype.backToDeck = function () {
@@ -144,7 +149,7 @@ function checkForVictory(){
     fRow1.row.length === 13 &&
     fRow2.row.length === 13 &&
     fRow3.row.length === 13 &&
-    fRow4.row.length === 13 &&
+    fRow4.row.length === 13
   ) {victory = true;}
 }
 
