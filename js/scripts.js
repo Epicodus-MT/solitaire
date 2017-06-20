@@ -23,10 +23,9 @@ PlayingCols.prototype.addToCol = function (card) {
   if (this.row.length === 0) {
     this.row.push(card);
   } else if (this.row[lastCard].shade !== card.shade && this.row[lastCard].number - card.number === 1) {
-    this.row.push(card); 
+    this.row.push(card);
   }
 }
-
 
 //creates rows needed for winning
 function FoundationRows (){
@@ -128,11 +127,31 @@ CardDeck.prototype.deal = function(){
   this.deck.splice(x, 1);
   console.log(player.pile);
 }
+//Deals cards back to deck when deck is empty
+CardDeck.prototype.backToDeck = function () {
+  if (this.deck.length === 0) {
+    let lastCard = player.pile.length;
+    for (let x = 0; x < lastCard; x++) {
+      this.deck.push(player.pile[x]);
+      player.pile.splice(x, 1);
+    }
+  }
+}
 
+//check for victory!
+function checkForVictory(){
+  if(
+    fRow1.row.length === 13 &&
+    fRow2.row.length === 13 &&
+    fRow3.row.length === 13 &&
+    fRow4.row.length === 13 &&
+  ) {victory = true;}
+}
 
 
 //console log testing
 $(document).ready(function(){
+  victory = false;
   player = new Player();
   solitaire = new CardDeck();
   playingCol1 = new PlayingCols();
@@ -153,4 +172,4 @@ $(document).ready(function(){
   solitaire.deal();
   solitaire.deal();
   solitaire.deal();
-})
+});
