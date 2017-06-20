@@ -109,25 +109,25 @@ CardDeck.prototype.startGame = function(){
     if (z >= 21 && z <= 27 ) {playingCol7.row.push(pulledCard); }
   }
   //flips last card in row face up
-  function presentCards (playingCol) {
+  function presentCards (playingCol, id) {
     let lastCard = playingCol.row.length - 1;
     playingCol.row[lastCard].faceDown = false;
     for (let x = 0; x < playingCol.row.length; x++){
       if (playingCol.row[x].faceDown === true){
-          $('body').append("<img class = 'card' src='cardimg/deck-haunted-house.png' />")
+          $('#playingCol' + id).append("<img class = 'card' src='cardimg/deck-haunted-house.png' />")
       } else {
-          $('body').append("<img class = 'card' src='cardimg/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".png' />")
+          $('#playingCol' + id).append("<img class = 'card' src='cardimg/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".png' />")
       }
     }
   }
 
-  presentCards(playingCol1);
-  presentCards(playingCol2);
-  presentCards(playingCol3);
-  presentCards(playingCol4);
-  presentCards(playingCol5);
-  presentCards(playingCol6);
-  presentCards(playingCol7);
+  presentCards(playingCol1, 1);
+  presentCards(playingCol2, 2);
+  presentCards(playingCol3, 3);
+  presentCards(playingCol4, 4);
+  presentCards(playingCol5, 5);
+  presentCards(playingCol6, 6);
+  presentCards(playingCol7, 7);
 }
 
 
