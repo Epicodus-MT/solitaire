@@ -116,7 +116,7 @@ CardDeck.prototype.startGame = function(){
       if (playingCol.row[x].faceDown === true){
           $('#playingCol' + id).append("<img class = 'card' src='cardimg/deck-haunted-house.png' />")
       } else {
-          $('#playingCol' + id).append("<img class = 'card' src='cardimg/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".png' />")
+          $('#playingCol' + id).append("<img class = 'card' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' />")
       }
     }
   }
@@ -142,7 +142,7 @@ CardDeck.prototype.deal = function(){
   //Displays dealt card to html by appending the appropriate img
   let lastCard = player.pile.length - 1;
   player.pile[lastCard].faceDown = false;
-  $('body').append("<img class = 'card' src='cardimg/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".png' />")
+  $('body').append("<img class = 'card' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' />")
 }
 //Deals cards back to deck when deck is empty
 CardDeck.prototype.backToDeck = function () {

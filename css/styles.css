@@ -5,8 +5,7 @@
   z-index: 2;
 }
 
-#playingCol1 {
-  z-index: 1;
-  /*background-color: green;
-  height: 400px;*/
+.col-md-1.5 {
+  background-color: green;
+  float: right;
 }
