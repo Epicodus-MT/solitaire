@@ -7,14 +7,17 @@ function Player () {
 }
 
 //Constructor for playing cols
-function PlayingCols (){
+function PlayingCols (id){
   this.row = [];
+  this.id = id;
 }
 
-PlayingCols.prototype.lastCardFlip = function (card) {
+PlayingCols.prototype.lastCardFlip = function () {
   let lastCard = this.row.length - 1;
   if (this.row[lastCard].faceDown === true) {
     this.row[lastCard].faceDown === false;
+    $('#playingCol' + this.id).append("<img class = 'card' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' />")
+
   }
 }
 
@@ -109,32 +112,42 @@ CardDeck.prototype.startGame = function(){
     if (z >= 21 && z <= 27 ) {playingCol7.row.push(pulledCard); }
   }
   //flips last card in row face up
-  function presentCards (playingCol, id) {
+  function presentCards (playingCol) {
     let lastCard = playingCol.row.length - 1;
     playingCol.row[lastCard].faceDown = false;
     for (let x = 0; x < playingCol.row.length; x++){
       if (playingCol.row[x].faceDown === true){
-          $('#playingCol' + id).append("<img class = 'card' src='cardimg/deck-haunted-house.png' />")
+          $('#playingCol' + playingCol.id).append("<img class = 'card' src='cardimg/deck-haunted-house.png' />")
       } else {
-          $('#playingCol' + id).append("<img class = 'card' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' />")
+          $('#playingCol' + playingCol. id).append("<img class = 'card' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' />")
       }
     }
   }
 
-  presentCards(playingCol1, 1);
-  presentCards(playingCol2, 2);
-  presentCards(playingCol3, 3);
-  presentCards(playingCol4, 4);
-  presentCards(playingCol5, 5);
-  presentCards(playingCol6, 6);
-  presentCards(playingCol7, 7);
+  presentCards(playingCol1);
+  presentCards(playingCol2);
+  presentCards(playingCol3);
+  presentCards(playingCol4);
+  presentCards(playingCol5);
+  presentCards(playingCol6);
+  presentCards(playingCol7);
   $('#deck').append("<img class = 'card' src='cardimg/deck-haunted-house.png' />")
 
 }
 
 
 //Deals cards
+//Deals cards
 CardDeck.prototype.deal = function(){
+  if (this.deck.length === 0) {
+    $('#pile').append("<img class = 'card' src='img/" + player.pile[firstCard].number + "_of_" + player.pile[firstCard].suit + ".jpeg' />")
+    firstCard += 1;
+    if (firstCard > 23){
+      console.log("LOOPED");
+      firstCard = 0;
+      $('#pile').empty();
+    }
+  } else {
   //Pulls a random card from the deck and leaves it in the player's pile
   let x = Math.floor(Math.random() * (this.deck.length - 1));
   this.deck[x].faceDown = false;
@@ -145,15 +158,7 @@ CardDeck.prototype.deal = function(){
   let lastCard = player.pile.length - 1;
   player.pile[lastCard].faceDown = false;
   $('#pile').append("<img class = 'card' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' />")
-}
-//Deals cards back to deck when deck is empty
-CardDeck.prototype.backToDeck = function () {
-  if (this.deck.length === 0) {
-    let lastCard = player.pile.length;
-    for (let x = 0; x < lastCard; x++) {
-      this.deck.push(player.pile[x]);
-      player.pile.splice(x, 1);
-    }
+  if (this.deck.length === 0){$('#pile').empty();}
   }
 }
 
@@ -173,13 +178,14 @@ $(document).ready(function(){
   victory = false;
   player = new Player();
   solitaire = new CardDeck();
-  playingCol1 = new PlayingCols();
-  playingCol2 = new PlayingCols();
-  playingCol3 = new PlayingCols();
-  playingCol4 = new PlayingCols();
-  playingCol5 = new PlayingCols();
-  playingCol6 = new PlayingCols();
-  playingCol7 = new PlayingCols();
+  firstCard = 0;
+  playingCol1 = new PlayingCols(1);
+  playingCol2 = new PlayingCols(2);
+  playingCol3 = new PlayingCols(3);
+  playingCol4 = new PlayingCols(4);
+  playingCol5 = new PlayingCols(5);
+  playingCol6 = new PlayingCols(6);
+  playingCol7 = new PlayingCols(7);
   fRow1 = new FoundationRows();
   fRow2 = new FoundationRows();
   fRow3 = new FoundationRows();
@@ -190,7 +196,6 @@ $(document).ready(function(){
   console.log(player.pile);
   $('#deck').click(function(){
     solitaire.deal();
-    console.log("_________________");
     console.log(solitaire.deck);
     console.log(player.pile);
   })
