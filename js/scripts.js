@@ -7,18 +7,31 @@ function Player () {
 }
 
 //Constructor for playing cols
-function PlayingCols (id){
+function PlayingCols (num){
   this.row = [];
-  this.id = id;
+  this.num = num;
 }
 
 PlayingCols.prototype.lastCardFlip = function () {
   let lastCard = this.row.length - 1;
   if (this.row[lastCard].faceDown === true) {
-    this.row[lastCard].faceDown === false;
-    $('#playingCol' + this.id).append("<img class = 'card' id='" + playingCol.row[x].number +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)'   />")
-
+    console.log(this.row[lastCard]);
+    this.row[lastCard].faceDown = false;
+    console.log(this.row[lastCard]);
+    // $("#playingCol" + this.num + " .card:last-child").append("<img class = 'card' id='" + this.row[lastCard].number +"' src='img/" + this.row[lastCard].number + "_of_" + this.row[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)'   />");
+    $("#playingCol" + this.num + " .card:last-child").after();
   }
+  //console.log(this.row);
+}
+
+function checkForLastCardFlip() {
+  playingCol1.lastCardFlip();
+  playingCol2.lastCardFlip();
+  playingCol3.lastCardFlip();
+  playingCol4.lastCardFlip();
+  playingCol5.lastCardFlip();
+  playingCol6.lastCardFlip();
+  playingCol7.lastCardFlip();
 }
 
 PlayingCols.prototype.addToCol = function (card) {
@@ -117,9 +130,9 @@ CardDeck.prototype.startGame = function(){
     playingCol.row[lastCard].faceDown = false;
     for (let x = 0; x < playingCol.row.length; x++){
       if (playingCol.row[x].faceDown === true){
-          $('#playingCol' + playingCol.id).append("<img class = 'card' id='" + playingCol.row[x].number +"' src='cardimg/deck-haunted-house.png' />")
+          $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number +"' src='cardimg/deck-haunted-house.png' />")
       } else {
-          $('#playingCol' + playingCol. id).append("<img class = 'card' id='" + playingCol.row[x].number +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
+          $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
       }
     }
   }
@@ -176,16 +189,24 @@ function checkForVictory(){
 //functions for drag and drop
 function allowDrop(ev) {
   ev.preventDefault();
+  console.log("allowDrop");
 }
 
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
+  console.log("drag");
 }
 
 function drop(ev) {
   ev.preventDefault();
+  console.log("drop");
   var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
+  console.log(data)
+  ev.currentTarget.appendChild(document.getElementById(data));
+  //remove card from array
+  playingCol3.row.splice(2, 1);
+
+  checkForLastCardFlip();
 }
 //console log testing
 $(document).ready(function(){

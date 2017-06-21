@@ -48,6 +48,10 @@
   background-color: green;
 }
 
+#playingCol3 .card:last-child {
+  background-color: cyan;
+}
+
 .play-row .card:nth-child(n+2){
   background-color: salmon;
   margin-left: -54px;
