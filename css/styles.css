@@ -1,22 +1,88 @@
 
-.card {
+body {
+  background-color: green;
+  /*border-style: solid;*/
+  /*border-color: black;
+  border-width: 2px;*/
+}
+
+#solitaire-header {
+  background-color: #09218D;
+  background-image: url("../img/random-images/solitaire-bar.jpeg");
+  height: 34px;
+  width: 100%;
+  background-repeat: no-repeat;
+  border-style: solid black;
+  border-bottom-width: 2px;
+}
+#dropdown{
+  background-color: gray;
+  border-style: solid black;
+  border-bottom-width: 200px;
+}
+
+#player{
+  background-image: url("../img/random-images/foundation-square.jpeg");
   height: 150px;
   width: 100px;
- width: 54px; height: 84px;
- border: 2px solid #333;
+  background-repeat: no-repeat;
+}
+
+#fRow1{
+  background-image: url("../img/random-images/foundation-square.jpeg");
+  height: 150px;
+  width: 100px;
+  background-repeat: no-repeat;
+}
+#fRow2{
+  background-image: url("../img/random-images/foundation-square.jpeg");
+  height: 150px;
+  width: 100px;
+  background-repeat: no-repeat;
+}
+#fRow3{
+  background-image: url("../img/random-images/foundation-square.jpeg");
+  height: 150px;
+  width: 100px;
+  background-repeat: no-repeat;
+}
+#fRow4{
+  background-image: url("../img/random-images/foundation-square.jpeg");
+  height: 150px;
+  width: 100px;
+  background-repeat: no-repeat;
+}
+#score-timer {
+  background-color: white;
+  text-align: right;
+  height: 30px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  border-style: solid black;
+  border-top-width: 2px;
+}
+
+.card {
+ width: 100px; height: 150px;
+ /*border: 2px solid #333;
  -moz-border-radius: 8px;
  -webkit-border-radius: 8px;
  -khtml-border-radius: 8px;
  border-radius: 8px;
- padding: 2px;
- text-align: center; font-size: 200%;
- position: static;
+ padding: 2px;*/
+ /*text-align: center; font-size: 200%;*/
+ /*position: static;*/
 }
 
 #deck {
+  /*background-image: url("../img/random-images/foundation-square.jpeg");*/
   float: left;
   margin-right: 25px;
   margin-left: 50px;
+  height: 150px;
+  width: 100px;
+  background-repeat: no-repeat;
 }
 
 #pile .card {
@@ -25,8 +91,8 @@
 
 .foundation-row {
   background-color: green;
-  height: 75px;
-  width: 100px;
+  height: 100px;
+  width: 150px;
   margin-right: 90px;
   float: right;
 }
@@ -38,70 +104,103 @@
 
 .play-row {
   margin: 50px 50px 50px 50px;
-  height: 150px;
-  width: 100px;
   float: left;
-
 }
 
 .play-row .card:first-child {
-  background-color: green;
-}
-
-#playingCol3 .card:last-child {
-  background-color: cyan;
+  background-color: black;
 }
 
 .play-row .card:nth-child(n+2){
-  background-color: salmon;
-  margin-left: -54px;
-  margin-bottom: -35px;
+  /*background-color: green;*/
+  margin-left: -100px;
+  margin-bottom: -70px;
 }
 
 .play-row .card:nth-child(n+3){
-  background-color: salmon;
-  margin-left: -54px;
-  margin-bottom: -65px;
+  /*background-color: black;*/
+  margin-left: -100px;
+  margin-bottom: -70px;
 }
 
 .play-row .card:nth-child(n+4){
-  background-color: salmon;
-  margin-left: -54px;
-  margin-bottom: -95px;
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
 }
 
 .play-row .card:nth-child(n+5){
-  background-color: salmon;
-  margin-left: -54px;
-  margin-bottom: -125px;
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
 }
 .play-row .card:nth-child(n+6){
-  background-color: salmon;
-  margin-left: -54px;
-  margin-bottom: -155px;
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
 }
 .play-row .card:nth-child(n+7){
-  background-color: salmon;
-  margin-left: -54px;
-  margin-bottom: -185px;
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
 }
 .play-row .card:nth-child(n+8){
-  background-color: salmon;
-  margin-left: -54px;
-  margin-bottom: -215px;
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
 }
 .play-row .card:nth-child(n+9){
-  background-color: salmon;
-  margin-left: -54px;
-  margin-bottom: -245px;
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
 }
 .play-row .card:nth-child(n+10){
-  background-color: salmon;
-  margin-left: -54px;
-  margin-bottom: -275px;
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
 }
 .play-row .card:nth-child(n+11){
-  background-color: salmon;
-  margin-left: -54px;
-  margin-bottom: -305px;
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
+}
+.play-row .card:nth-child(n+12){
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
+}
+.play-row .card:nth-child(n+13){
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
+}
+.play-row .card:nth-child(n+14){
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
+}
+.play-row .card:nth-child(n+15){
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
+}
+.play-row .card:nth-child(n+16){
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
+}
+.play-row .card:nth-child(n+17){
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
+}
+.play-row .card:nth-child(n+18){
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
+}
+.play-row .card:nth-child(n+19){
+  background-color: black;
+  margin-left: -100px;
+  margin-bottom: -70px;
 }
