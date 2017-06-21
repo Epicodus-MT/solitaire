@@ -16,7 +16,7 @@ PlayingCols.prototype.lastCardFlip = function () {
   let lastCard = this.row.length - 1;
   if (this.row[lastCard].faceDown === true) {
     this.row[lastCard].faceDown === false;
-    $('#playingCol' + this.id).append("<img class = 'card' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' />")
+    $('#playingCol' + this.id).append("<img class = 'card' id='" + playingCol.row[x].number +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)'   />")
 
   }
 }
@@ -117,9 +117,9 @@ CardDeck.prototype.startGame = function(){
     playingCol.row[lastCard].faceDown = false;
     for (let x = 0; x < playingCol.row.length; x++){
       if (playingCol.row[x].faceDown === true){
-          $('#playingCol' + playingCol.id).append("<img class = 'card' src='cardimg/deck-haunted-house.png' />")
+          $('#playingCol' + playingCol.id).append("<img class = 'card' id='" + playingCol.row[x].number +"' src='cardimg/deck-haunted-house.png' />")
       } else {
-          $('#playingCol' + playingCol. id).append("<img class = 'card' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' />")
+          $('#playingCol' + playingCol. id).append("<img class = 'card' id='" + playingCol.row[x].number +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
       }
     }
   }
@@ -131,7 +131,7 @@ CardDeck.prototype.startGame = function(){
   presentCards(playingCol5);
   presentCards(playingCol6);
   presentCards(playingCol7);
-  $('#deck').append("<img class = 'card' src='cardimg/deck-haunted-house.png' />")
+  $('#deck').append("<img class = 'card' src='cardimg/deck-haunted-house.png'  />")
 
 }
 
@@ -140,7 +140,7 @@ CardDeck.prototype.startGame = function(){
 //Deals cards
 CardDeck.prototype.deal = function(){
   if (this.deck.length === 0) {
-    $('#pile').append("<img class = 'card' src='img/" + player.pile[firstCard].number + "_of_" + player.pile[firstCard].suit + ".jpeg' />")
+    $('#pile').append("<img class = 'card' id='" + playingCol.row[x].number +"' src='img/" + player.pile[firstCard].number + "_of_" + player.pile[firstCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
     firstCard += 1;
     if (firstCard > 23){
       console.log("LOOPED");
@@ -157,7 +157,7 @@ CardDeck.prototype.deal = function(){
   //Displays dealt card to html by appending the appropriate img
   let lastCard = player.pile.length - 1;
   player.pile[lastCard].faceDown = false;
-  $('#pile').append("<img class = 'card' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' />")
+  $('#pile').append("<img class = 'card' id='" + player.pile[lastCard].number +"' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
   if (this.deck.length === 0){$('#pile').empty();}
   }
 }
@@ -173,6 +173,20 @@ function checkForVictory(){
 }
 
 
+//functions for drag and drop
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
 //console log testing
 $(document).ready(function(){
   victory = false;
@@ -196,7 +210,8 @@ $(document).ready(function(){
   console.log(player.pile);
   $('#deck').click(function(){
     solitaire.deal();
+    playingCol2.lastCardFlip();
     console.log(solitaire.deck);
     console.log(player.pile);
-  })
+  });
 });
