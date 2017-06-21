@@ -2,10 +2,38 @@
 .card {
   height: 150px;
   width: 100px;
-  z-index: 2;
+ width: 54px; height: 84px;
+ border: 2px solid #333;
+ -moz-border-radius: 8px;
+ -webkit-border-radius: 8px;
+ -khtml-border-radius: 8px;
+ border-radius: 8px;
+ padding: 2px;
+ text-align: center; font-size: 200%;
+ position: static;
 }
 
 .col-md-1.5 {
   background-color: green;
   float: right;
 }
+
+#playingCol2 {
+  margin: 50px 50px 50px 50px;
+}
+
+#playingCol2 .card:first-child {
+  background-color: green;
+}
+
+#playingCol2 .card:nth-child(2){
+  background-color: salmon;
+  margin-left: -54px;
+  margin-bottom: -35px;
+}
+/*
+#playingCol2:not(.card:first-child){
+  background-color: salmon;
+  margin-left: -54px;
+  margin-bottom: -35px;
+}*/
