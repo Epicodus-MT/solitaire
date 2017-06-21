@@ -15,8 +15,20 @@
 
 #deck {
   float: left;
-  margin-right: 50px;
+  margin-right: 25px;
   margin-left: 50px;
+}
+
+#pile .card {
+  position: absolute;
+}
+
+.foundation-row {
+  background-color: green;
+  height: 100px;
+  width: 150px;
+  margin-right: 90px;
+  float: right;
 }
 
 .col-md-1.5 {
@@ -65,4 +77,24 @@
   background-color: salmon;
   margin-left: -54px;
   margin-bottom: -185px;
+}
+.play-row .card:nth-child(n+8){
+  background-color: salmon;
+  margin-left: -54px;
+  margin-bottom: -215px;
+}
+.play-row .card:nth-child(n+9){
+  background-color: salmon;
+  margin-left: -54px;
+  margin-bottom: -245px;
+}
+.play-row .card:nth-child(n+10){
+  background-color: salmon;
+  margin-left: -54px;
+  margin-bottom: -275px;
+}
+.play-row .card:nth-child(n+11){
+  background-color: salmon;
+  margin-left: -54px;
+  margin-bottom: -305px;
 }
