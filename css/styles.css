@@ -13,27 +13,56 @@
  position: static;
 }
 
+#deck {
+  float: left;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
 .col-md-1.5 {
   background-color: green;
   float: right;
 }
 
-#playingCol2 {
+.play-row {
   margin: 50px 50px 50px 50px;
+  float: left;
 }
 
-#playingCol2 .card:first-child {
+.play-row .card:first-child {
   background-color: green;
 }
 
-#playingCol2 .card:nth-child(2){
+.play-row .card:nth-child(n+2){
   background-color: salmon;
   margin-left: -54px;
   margin-bottom: -35px;
 }
-/*
-#playingCol2:not(.card:first-child){
+
+.play-row .card:nth-child(n+3){
   background-color: salmon;
   margin-left: -54px;
-  margin-bottom: -35px;
-}*/
+  margin-bottom: -65px;
+}
+
+.play-row .card:nth-child(n+4){
+  background-color: salmon;
+  margin-left: -54px;
+  margin-bottom: -95px;
+}
+
+.play-row .card:nth-child(n+5){
+  background-color: salmon;
+  margin-left: -54px;
+  margin-bottom: -125px;
+}
+.play-row .card:nth-child(n+6){
+  background-color: salmon;
+  margin-left: -54px;
+  margin-bottom: -155px;
+}
+.play-row .card:nth-child(n+7){
+  background-color: salmon;
+  margin-left: -54px;
+  margin-bottom: -185px;
+}
