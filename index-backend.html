@@ -8,6 +8,12 @@
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script language="javascript" type="text/javascript">
+    function windowClose() {
+      window.open('','_parent','');
+      window.close();
+    }
+    </script>
     <title>Solitaire</title>
   </head>
   <body>
@@ -19,12 +25,15 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="#">New Game (F2)</a></li>
+        <!-- <li><a href="#">New Game (F2)</a></li> -->
+        <li><input type="button" value="New Game (F2)" onClick="window.location.reload()"></li>
         <li role="separator" class="divider"></li>
         <li><a href="#">Options (F5)</a></li>
         <li><a href="#">Change Appearance (F7)</a></li>
+
         <li role="separator" class="divider"></li>
-        <li><a href="#">Exit</a></li>
+        <!-- <li><a href="#">Exit</a></li> -->
+        <li><input type="button" value="Exit" onClick="self-close()"></li>
       </ul>
     </div>
     <br>
