@@ -1,3 +1,4 @@
+
 //The game board will keep track of cards and victory
 function Player () {
   this.pile = [];
@@ -124,29 +125,40 @@ CardDeck.prototype.startGame = function(){
 
 }
 
+//shuffles deck
+CardDeck.prototype.shuffle = function (){
+  let shuffledDeck = [];
+  for (let x = 0; x < this.deck.length; x++){
+    let y = Math.floor(Math.random() * (this.deck.length - 1));
+    console.log(y);
+    shuffledDeck.push(this.deck[y]);
+    this.deck.splice(y,1);
+    this.deck.push(shuffledDeck[x]);
+  }
+  console.log(shuffledDeck);
+  console.log(this.deck);
+}
 
 //Deals cards
 CardDeck.prototype.deal = function(){
   if (this.deck.length === 0) {
-    $('#pile').append("<img class = 'card' id='" + playingCol.row[x].number +"' src='img/" + player.pile[firstCard].number + "_of_" + player.pile[firstCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
-    firstCard += 1;
-    if (firstCard > 23){
-      console.log("LOOPED");
-      firstCard = 0;
-      $('#pile').empty();
+    for (let x = 0; x < player.pile.length; x++){
+      this.deck.push(player.pile[x]);
+      player.pile.splice(x,1);
     }
+    $('#deck').append("<img class = 'card' src='cardimg/deck-haunted-house.png'  />");
+    $('#pile').empty();
   } else {
   //Pulls a random card from the deck and leaves it in the player's pile
-  let x = Math.floor(Math.random() * (this.deck.length - 1));
-  this.deck[x].faceDown = false;
-  player.pile.push(this.deck[x]);
-  this.deck.splice(x, 1);
+  this.deck[0].faceDown = false;
+  player.pile.push(this.deck[0]);
+  this.deck.splice(0, 1);
 
   //Displays dealt card to html by appending the appropriate img
   let lastCard = player.pile.length - 1;
   player.pile[lastCard].faceDown = false;
   $('#pile').append("<img class = 'card' id='" + player.pile[lastCard].number + player.pile[lastCard].suit + "' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
-  if (this.deck.length === 0){$('#pile').empty();}
+  if (this.deck.length === 0) {$('#deck').empty()};
   }
 }
 
@@ -200,8 +212,8 @@ $(document).ready(function(){
   fRow4 = new FoundationRows();
   solitaire.initializeDeck();
   solitaire.startGame();
-  console.log(solitaire.deck);
-  console.log(player.pile);
+  solitaire.shuffle();
+
 
 
   $('.card').click(function(){
