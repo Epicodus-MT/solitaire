@@ -154,7 +154,7 @@ body {
 .play-row .card:nth-child(n+2){
   /*background-color: green;*/
   margin-left: -100px;
-  margin-bottom: -20px;
+  margin-bottom: -35px;
 }
 
 .play-row .card:nth-child(n+3){
@@ -166,81 +166,81 @@ body {
 .play-row .card:nth-child(n+4){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -120px;
+  margin-bottom: -105px;
 }
 
 .play-row .card:nth-child(n+5){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -170px;
+  margin-bottom: -140px;
 }
 .play-row .card:nth-child(n+6){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -220px;
+  margin-bottom: -175px;
 }
 .play-row .card:nth-child(n+7){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -270px;
+  margin-bottom: -205px;
 }
 .play-row .card:nth-child(n+8){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -320px;
+  margin-bottom: -240px;
 }
 .play-row .card:nth-child(n+9){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -370px;
+  margin-bottom: -275px;
 }
 .play-row .card:nth-child(n+10){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -420px;
+  margin-bottom: -310px;
 }
 .play-row .card:nth-child(n+11){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -470px;
+  margin-bottom: -345px;
 }
 .play-row .card:nth-child(n+12){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -520px;
+  margin-bottom: -380px;
 }
 .play-row .card:nth-child(n+13){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -570px;
+  margin-bottom: -415px;
 }
 .play-row .card:nth-child(n+14){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -620px;
+  margin-bottom: -450px;
 }
 .play-row .card:nth-child(n+15){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -670px;
+  margin-bottom: -485px;
 }
 .play-row .card:nth-child(n+16){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -720px;
+  margin-bottom: -525px;
 }
 .play-row .card:nth-child(n+17){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -770px;
+  margin-bottom: -560px;
 }
 .play-row .card:nth-child(n+18){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -820px;
+  margin-bottom: -595px;
 }
 .play-row .card:nth-child(n+19){
   background-color: black;
   margin-left: -100px;
-  margin-bottom: -870px;
+  margin-bottom: -630px;
 }
