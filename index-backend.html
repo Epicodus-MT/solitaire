@@ -4,18 +4,25 @@
     <meta charset="utf-8">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
-    <link href="css/dragula.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+    function options() {
+        window.open("img/random-images/options.png", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+    }
+    </script>
+    <script>
+    function appearance() {
+        window.open("img/references-non-program/2.png", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+    }
+    </script>
     <script language="javascript" type="text/javascript">
     function windowClose() {
       window.open('','_parent','');
       window.close();
     }
     </script>
-
-    <!-- <blockquote class="imgur-embed-pub" lang="en" data-id="CVAWdaB"><a href="//imgur.com/CVAWdaB">Solitaire</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script> -->
 
     <title>Solitaire</title>
   </head>
@@ -31,22 +38,20 @@
         <li><input type="button" value="New Game (F2)" onClick="window.location.reload()"></li>
         <li role="separator" class="divider"></li>
 
-        <li><a href="#">Options (F5)</a></li>
-        <li><a href="#">Change Appearance (F7)</a></li>
+        <!-- <li><a href="#">Options (F5)</a></li> -->
+        <li><button onclick="options()">Options (F5)</button></li>
+        <li><button onclick="appearance()">Change Appearance (F7)</button></li>
+
+
+
+
+
+
 
         <li role="separator" class="divider"></li>
-        <!-- <li>
-          <button class="button" id="winner" onClick="window.open('img/random-images/solitaire.gif');"><span class="icon">Game Winner</span></button>
-        </li> -->
-
-
-
           <li>
             <button class="button" id="winner" onClick="window.open('img/random-images/solitaire.gif');"><span class="icon">Game Winner</span></button>
           </li>
-
-
-
         <li role="separator" class="divider"></li>
         <li><input type="button" value="Exit" onClick="windowClose()"></li>
       </ul>
