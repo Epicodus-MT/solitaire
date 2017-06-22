@@ -64,6 +64,10 @@ body {
   border-top-width: 2px;
 }
 
+.timer > * {
+  margin-right: 10px;
+}
+
 .card {
  width: 100px; height: 150px;
  /*border: 2px solid #333;

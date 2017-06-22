@@ -1,53 +1,14 @@
-//TOMORROW: Create constructor for game rows, they'll work nicer as objects
-//Empty out player and give pile to a new Player constructor
 
 //The game board will keep track of cards and victory
 function Player () {
   this.pile = [];
-}
+};
 
 //Constructor for playing cols
 function PlayingCols (num){
   this.row = [];
   this.num = num;
-}
-
-PlayingCols.prototype.lastCardFlip = function () {
-  let lastCard = this.row.length - 1;
-  if (this.row[lastCard].faceDown === true) {
-    console.log(this.row[lastCard]);
-    this.row[lastCard].faceDown = false;
-    console.log(this.row[lastCard]);
-    // $("#playingCol" + this.num + " .card:last-child").append("<img class = 'card' id='" + this.row[lastCard].number +"' src='img/" + this.row[lastCard].number + "_of_" + this.row[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)'   />");
-    $("#playingCol" + this.num + " .card:last-child").after();
-  }
-  //console.log(this.row);
-}
-
-//
-// PlayingCols.prototype.lastCardFlip = function () {
-//   let lastCard = this.row.length - 1;
-//   if (lastCard >= 0 && this.row[lastCard].faceDown === true) {
-//     console.log(this.row[lastCard]);
-//     this.row[lastCard].faceDown = false;
-//     console.log(this.row[lastCard]);
-//     $('#playingCol' + this.num).append("<img class = 'card' id='" + this.row[lastCard].number +"' src='img/" + this.row[lastCard].number + "_of_" + this.row[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
-//     $("#playingCol" + this.num + " .card:last-child").after();
-//   }
-//   //console.log(this.row);
-// }
-
-
-
-function checkForLastCardFlip() {
-  playingCol1.lastCardFlip();
-  playingCol2.lastCardFlip();
-  playingCol3.lastCardFlip();
-  playingCol4.lastCardFlip();
-  playingCol5.lastCardFlip();
-  playingCol6.lastCardFlip();
-  playingCol7.lastCardFlip();
-}
+};
 
 PlayingCols.prototype.addToCol = function (card) {
   let lastCard = this.row.length - 1;
@@ -144,10 +105,11 @@ CardDeck.prototype.startGame = function(){
     let lastCard = playingCol.row.length - 1;
     playingCol.row[lastCard].faceDown = false;
     for (let x = 0; x < playingCol.row.length; x++){
+      console.log(playingCol.row[x].faceDown);
       if (playingCol.row[x].faceDown === true){
-          $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number +"' src='cardimg/deck-haunted-house.png' />")
+          $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='cardimg/deck-haunted-house.png' />")
       } else {
-          $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
+          $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
       }
     }
   }
@@ -165,7 +127,6 @@ CardDeck.prototype.startGame = function(){
 
 
 //Deals cards
-//Deals cards
 CardDeck.prototype.deal = function(){
   if (this.deck.length === 0) {
     $('#pile').append("<img class = 'card' id='" + playingCol.row[x].number +"' src='img/" + player.pile[firstCard].number + "_of_" + player.pile[firstCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
@@ -181,11 +142,11 @@ CardDeck.prototype.deal = function(){
   this.deck[x].faceDown = false;
   player.pile.push(this.deck[x]);
   this.deck.splice(x, 1);
-  //console.log(player.pile);
+
   //Displays dealt card to html by appending the appropriate img
   let lastCard = player.pile.length - 1;
   player.pile[lastCard].faceDown = false;
-  $('#pile').append("<img class = 'card' id='" + player.pile[lastCard].number +"' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
+  $('#pile').append("<img class = 'card' id='" + player.pile[lastCard].number + player.pile[lastCard].suit + "' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
   if (this.deck.length === 0){$('#pile').empty();}
   }
 }
@@ -218,41 +179,10 @@ function drop(ev) {
   var data = ev.dataTransfer.getData("text");
   console.log(data)
   ev.currentTarget.appendChild(document.getElementById(data));
-  //remove card from array
-  playingCol3.row.splice(2, 1);
 
-  checkForLastCardFlip();
 }
 
-// var draggingParentDiv;
-// function drag(ev) {
-//   ev.dataTransfer.setData("text", ev.target.id);
-//   console.log("drag");
-//   draggingParentDiv = ev.target.parentElement;
-// }
-//
-// function drop(ev) {
-//   ev.preventDefault();
-//   console.log("drop");
-//   var data = ev.dataTransfer.getData("text");
-//   console.log(data)
-//   ev.currentTarget.appendChild(document.getElementById(data));
-//
-//   //remove card from array, add placeholder image
-//   this[draggingParentDiv.id].row.splice(-1, 1);
-//   if (this[draggingParentDiv.id].row.length === 0) {
-//     $(draggingParentDiv).append("<img class = 'card' src='img/random-images/place-holder.jpeg' />")
-//   }
-//
-//   checkForLastCardFlip();
-// }
-
-
-
-
-
-
-//console log testing
+//Run Game
 $(document).ready(function(){
   victory = false;
   player = new Player();
@@ -273,9 +203,18 @@ $(document).ready(function(){
   solitaire.startGame();
   console.log(solitaire.deck);
   console.log(player.pile);
+
+
+  $('.card').click(function(){
+    let cardId = '#' + this.id;
+    let cardCol = '#' + $(this).parent().attr('id');
+    let idArray = this.id.split(/(\d+)/g);
+    idArray.splice(0,1);
+    $(cardId).remove();
+    $(cardCol).append("<img class = 'card' id='" + idArray[0] + idArray[1] +"' src='img/" + idArray[0] + "_of_" + idArray[1] + ".jpeg' draggable='true' ondragstart='drag(event)'   />");
+  });
   $('#deck').click(function(){
     solitaire.deal();
-    playingCol2.lastCardFlip();
     console.log(solitaire.deck);
     console.log(player.pile);
   });
