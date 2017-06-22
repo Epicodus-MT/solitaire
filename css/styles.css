@@ -34,6 +34,7 @@ body {
   width: 100px;
   background-repeat: no-repeat;
 }
+
 #fRow2{
   background-image: url("../img/random-images/foundation-square.jpeg");
   height: 150px;
@@ -76,7 +77,7 @@ body {
 }
 
 #deck {
-  /*background-image: url("../img/random-images/foundation-square.jpeg");*/
+  background-image: url("../img/random-images/end-of-deck.jpeg");
   float: left;
   margin-right: 25px;
   margin-left: 50px;
