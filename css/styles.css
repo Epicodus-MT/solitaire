@@ -76,6 +76,7 @@ body {
 
 #deck {
   background-image: url("../img/random-images/end-of-deck.jpeg");
+  background-size: contain;
   float: left;
   margin-right: 25px;
   margin-left: 50px;
@@ -155,7 +156,7 @@ body {
 .play-row .card:nth-child(n+2){
   /*background-color: green;*/
   margin-left: -100px;
-  margin-bottom: -20px;
+  margin-bottom: -35px;
 }
 
 .play-row .card:nth-child(n+3){
