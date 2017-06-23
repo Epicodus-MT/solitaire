@@ -140,7 +140,7 @@ CardDeck.prototype.startGame = function(){
   presentCards(playingCol5);
   presentCards(playingCol6);
   presentCards(playingCol7);
-  $('#deck').append("<img class = 'card' id='hidecard' src='img/deck-haunted-house.png'  />");
+  $('#deck').append("<img class = 'card' src='img/deck-haunted-house.png'  />");
   this.shuffle();
   $('#fRow1').append("<img class = 'card' id='hidecard' src='img/deck-haunted-house.png'  />");
   this.shuffle();
@@ -217,11 +217,11 @@ function drop(ev) {
     lastCardArray[0] !== draggedCardArray[0] &&
     parseInt(lastCardArray[1]) === (parseInt(draggedCardArray[1]) + 1)){
     ev.currentTarget.appendChild(document.getElementById(data))
-  } else if (
-    classArray[1] === "foundation-row" && 
-  ){
-    console.log("ERROR");
-  }
+  }// else if (
+  //   classArray[1] === "foundation-row"
+  // ){
+  //   console.log("ERROR");
+  // }
 
 }
 
