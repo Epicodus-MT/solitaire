@@ -99,7 +99,6 @@ CardDeck.prototype.shuffle = function (){
     this.deck[currentIndex] = this.deck[randomIndex];
     this.deck[randomIndex] = temporaryValue;
   }
-  console.log(this.deck);
 }
 
 //Pushes the cards out onto the board
@@ -108,9 +107,9 @@ function presentCards (playingCol) {
   playingCol.row[lastCard].faceDown = false;
   for (let x = 0; x < playingCol.row.length; x++){
     if (playingCol.row[x].faceDown === true){
-        $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/deck-haunted-house.png' />")
+        $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].shade + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/deck-haunted-house.png' />")
     } else {
-        $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
+        $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].shade  + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
     }
   }
 }
@@ -165,7 +164,7 @@ CardDeck.prototype.deal = function(){
     //Displays dealt card to html by appending the appropriate img
     let lastCard = player.pile.length - 1;
     player.pile[lastCard].faceDown = false;
-    $('#pile').append("<img class = 'card' id='" + player.pile[lastCard].number + player.pile[lastCard].suit + "' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
+    $('#pile').append("<img class = 'card' id='" + player.pile[lastCard].shade  + player.pile[lastCard].number + player.pile[lastCard].suit + "' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
     if (this.deck.length === 0) {
       $('#deck').empty();
     }
@@ -198,7 +197,7 @@ function drop(ev) {
   ev.preventDefault();
   console.log("drop");
   var data = ev.dataTransfer.getData("text");
-  console.log(data)
+  console.log(ev.currentTarget);
   ev.currentTarget.appendChild(document.getElementById(data));
 
 }
@@ -226,16 +225,18 @@ $(document).ready(function(){
 
 
   $('.card').click(function(){
+    console.log(this.id);
     let cardId = '#' + this.id;
     let cardCol = '#' + $(this).parent().attr('id');
     let idArray = this.id.split(/(\d+)/g);
-    idArray.splice(0,1);
+    console.log(idArray[0]);
+    console.log(idArray);
     $(cardId).remove();
-    $(cardCol).append("<img class = 'card' id='" + idArray[0] + idArray[1] +"' src='img/" + idArray[0] + "_of_" + idArray[1] + ".jpeg' draggable='true' ondragstart='drag(event)'   />");
+    $(cardCol).append("<img class = 'card' id='" + idArray[0] + idArray[1] + idArray[2] + "' src='img/" + idArray[1] + "_of_" + idArray[2] + ".jpeg' draggable='true' ondragstart='drag(event)'   />");
   });
   $('#deck').click(function(){
     solitaire.deal();
-    console.log(solitaire.deck);
-    console.log(player.pile);
+    // console.log(solitaire.deck);
+    // console.log(player.pile);
   });
 });

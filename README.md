@@ -60,4 +60,4 @@ _Languages used include HTML, CSS, and Javascript. Libraries used include Bootst
 
 *This software runs under the MIT license*
 
-Copyright (c) 2017 **_Mara Timberlake, Saul, Lincoln, Yokke_**
+Copyright (c) 2017 **_Mara Timberlake, Saul, Lincoln_**
