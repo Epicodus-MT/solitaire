@@ -212,17 +212,27 @@ function drop(ev) {
   let lastCardArray = lastCard.split(/(\d+)/g);
   let draggedCardArray = data.split(/(\d+)/g);
   console.log(classArray[1]);
+  console.log(lastCardArray[0]);
   if (
     classArray[1] === "play-row" &&
     lastCardArray[0] !== draggedCardArray[0] &&
     parseInt(lastCardArray[1]) === (parseInt(draggedCardArray[1]) + 1)){
-    ev.currentTarget.appendChild(document.getElementById(data))
-  }// else if (
-  //   classArray[1] === "foundation-row"
+    ev.currentTarget.appendChild(document.getElementById(data));
+  } else {
+    ev.currentTarget.appendChild(document.getElementById(data));
+  }
+  // } else if (
+  //   classArray[1] === "foundation-row" &&
+  //   lastCardArray[0] === "hidecard" &&
+  //   draggedCardArray[1] === "1"
   // ){
-  //   console.log("ERROR");
+  //   ev.currentTarget.appendChild(document.getElementById(data));
+  // } else if (
+  //     classArray[1] === "foundation-row" &&
+  //     lastCardArray[2] === draggedCardArray[2] &&
+  //     parseInt(lastCardArray[1]) === (parseInt(draggedCardArray[1]) - 1)){
+  //     ev.currentTarget.appendChild(document.getElementById(data));
   // }
-
 }
 
 //Run Game

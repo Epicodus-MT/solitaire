@@ -93,40 +93,40 @@ body {
 }
 
 .foundation-row .card:nth-child(n+2) {
-  margin-top: -175px;
+  margin-top: 0px;
 }
 .foundation-row .card:nth-child(n+3) {
-  margin-top: -215px;
+  margin-top: -175px;
 }
 .foundation-row .card:nth-child(n+4) {
-  margin-top: -255px;
+  margin-top: -215px;
 }
 .foundation-row .card:nth-child(n+5) {
-  margin-top: -290px;
+  margin-top: -255px;
 }
 .foundation-row .card:nth-child(n+6) {
-  margin-top: -325px;
+  margin-top: -295px;
 }
 .foundation-row .card:nth-child(n+7) {
-  margin-top: -360px;
+  margin-top: -335px;
 }
 .foundation-row .card:nth-child(n+8) {
-  margin-top: -395px;
+  margin-top: -375px;
 }
 .foundation-row .card:nth-child(n+9) {
-  margin-top: -430px;
+  margin-top: -415px;
 }
 .foundation-row .card:nth-child(n+10) {
-  margin-top: -465px;
+  margin-top: -455px;
 }
 .foundation-row .card:nth-child(n+11) {
-  margin-top: -500px;
+  margin-top: -495px;
 }
 .foundation-row .card:nth-child(n+12) {
   margin-top: -535px;
 }
 .foundation-row .card:nth-child(n+13) {
-  margin-top: -570px;
+  margin-top: -575px;
 }
 
 .col-md-1.5 {
