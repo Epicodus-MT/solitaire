@@ -81,6 +81,18 @@ CardDeck.prototype.initializeDeck = function(){
   }
 }
 
+//Pushes the cards out onto the board
+function presentCards (playingCol) {
+  let lastCard = playingCol.row.length - 1;
+  playingCol.row[lastCard].faceDown = false;
+  for (let x = 0; x < playingCol.row.length; x++){
+    if (playingCol.row[x].faceDown === true){
+        $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/deck-haunted-house.png' />")
+    } else {
+        $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
+    }
+  }
+}
 //puts the game board together
 CardDeck.prototype.startGame = function(){
   //loop to draw random card
@@ -100,20 +112,6 @@ CardDeck.prototype.startGame = function(){
     if (z >= 15 && z <= 20 ) {playingCol6.row.push(pulledCard); }
     if (z >= 21 && z <= 27 ) {playingCol7.row.push(pulledCard); }
   }
-  //flips last card in row face up
-  function presentCards (playingCol) {
-    let lastCard = playingCol.row.length - 1;
-    playingCol.row[lastCard].faceDown = false;
-    for (let x = 0; x < playingCol.row.length; x++){
-      console.log(playingCol.row[x].faceDown);
-      if (playingCol.row[x].faceDown === true){
-          $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/deck-haunted-house.png' />")
-      } else {
-          $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
-      }
-    }
-  }
-
   presentCards(playingCol1);
   presentCards(playingCol2);
   presentCards(playingCol3);
@@ -121,23 +119,23 @@ CardDeck.prototype.startGame = function(){
   presentCards(playingCol5);
   presentCards(playingCol6);
   presentCards(playingCol7);
-  $('#deck').append("<img class = 'card' src='img/deck-haunted-house.png'  />")
-
+  $('#deck').append("<img class = 'card' src='img/deck-haunted-house.png'  />");
+  this.shuffle();
 }
 
 //shuffles deck
 CardDeck.prototype.shuffle = function (){
-  let shuffledDeck = [];
-  for (let x = 0; x < this.deck.length; x++){
-    let y = Math.floor(Math.random() * (this.deck.length - 1));
-    console.log(y);
-    shuffledDeck.push(this.deck[y]);
-    this.deck.splice(y,1);
-    this.deck.push(shuffledDeck[x]);
+  let currentIndex = this.deck.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -=1;
+    temporaryValue = this.deck[currentIndex];
+    this.deck[currentIndex] = this.deck[randomIndex];
+    this.deck[randomIndex] = temporaryValue;
   }
-  console.log(shuffledDeck);
   console.log(this.deck);
 }
+
 
 //Deals cards
 CardDeck.prototype.deal = function(){
@@ -212,7 +210,6 @@ $(document).ready(function(){
   fRow4 = new FoundationRows();
   solitaire.initializeDeck();
   solitaire.startGame();
-  solitaire.shuffle();
 
 
 
