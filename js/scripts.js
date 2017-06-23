@@ -218,22 +218,20 @@ function drop(ev) {
     lastCardArray[0] !== draggedCardArray[0] &&
     parseInt(lastCardArray[1]) === (parseInt(draggedCardArray[1]) + 1)){
     ev.currentTarget.appendChild(document.getElementById(data));
-  } else {
+  } else if (
+    classArray[1] === "foundation-row" &&
+    lastCardArray[0] === "hidecard" &&
+    draggedCardArray[1] === "1"
+  ){
     ev.currentTarget.appendChild(document.getElementById(data));
+  } else if (
+      classArray[1] === "foundation-row" &&
+      lastCardArray[2] === draggedCardArray[2] &&
+      parseInt(lastCardArray[1]) === (parseInt(draggedCardArray[1]) - 1)){
+      ev.currentTarget.appendChild(document.getElementById(data));
   }
-  // } else if (
-  //   classArray[1] === "foundation-row" &&
-  //   lastCardArray[0] === "hidecard" &&
-  //   draggedCardArray[1] === "1"
-  // ){
-  //   ev.currentTarget.appendChild(document.getElementById(data));
-  // } else if (
-  //     classArray[1] === "foundation-row" &&
-  //     lastCardArray[2] === draggedCardArray[2] &&
-  //     parseInt(lastCardArray[1]) === (parseInt(draggedCardArray[1]) - 1)){
-  //     ev.currentTarget.appendChild(document.getElementById(data));
-  // }
 }
+
 
 //Run Game
 $(document).ready(function(){
