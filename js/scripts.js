@@ -140,7 +140,15 @@ CardDeck.prototype.startGame = function(){
   presentCards(playingCol5);
   presentCards(playingCol6);
   presentCards(playingCol7);
-  $('#deck').append("<img class = 'card' src='img/deck-haunted-house.png'  />");
+  $('#deck').append("<img class = 'card' id='hidecard' src='img/deck-haunted-house.png'  />");
+  this.shuffle();
+  $('#fRow1').append("<img class = 'card' id='hidecard' src='img/deck-haunted-house.png'  />");
+  this.shuffle();
+  $('#fRow2').append("<img class = 'card' id='hidecard'  src='img/deck-haunted-house.png'  />");
+  this.shuffle();
+  $('#fRow3').append("<img class = 'card' id='hidecard'  src='img/deck-haunted-house.png'  />");
+  this.shuffle();
+  $('#fRow4').append("<img class = 'card' id='hidecard' src='img/deck-haunted-house.png'  />");
   this.shuffle();
 }
 
@@ -196,9 +204,24 @@ function drag(ev) {
 function drop(ev) {
   ev.preventDefault();
   console.log("drop");
-  var data = ev.dataTransfer.getData("text");
-  console.log(ev.currentTarget);
-  ev.currentTarget.appendChild(document.getElementById(data));
+  let data = ev.dataTransfer.getData("text");
+  let targetedCol = "#" + ev.currentTarget.id;
+  let targetedColClass = ev.currentTarget.className;
+  let classArray = targetedColClass.split(" ");
+  let lastCard = $(targetedCol).children().last().attr('id');
+  let lastCardArray = lastCard.split(/(\d+)/g);
+  let draggedCardArray = data.split(/(\d+)/g);
+  console.log(classArray[1]);
+  if (
+    classArray[1] === "play-row" &&
+    lastCardArray[0] !== draggedCardArray[0] &&
+    parseInt(lastCardArray[1]) === (parseInt(draggedCardArray[1]) + 1)){
+    ev.currentTarget.appendChild(document.getElementById(data))
+  } else if (
+    classArray[1] === "foundation-row" && 
+  ){
+    console.log("ERROR");
+  }
 
 }
 

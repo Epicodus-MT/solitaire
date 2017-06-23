@@ -40,6 +40,10 @@ body {
  height: 150px;
 }
 
+#hidecard {
+  display: none;
+}
+
 #deck {
   background-image: url("../img/end-of-deck.jpeg");
   float: left;
