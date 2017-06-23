@@ -1,5 +1,5 @@
 
-//The game board will keep track of cards and victory
+//The  player will own the playing pile
 function Player () {
   this.pile = [];
 };
@@ -9,7 +9,9 @@ function PlayingCols (num){
   this.row = [];
   this.num = num;
 };
+//PlayingCols METHODS
 
+//tests to see if a card can be added to a column based on number and suit
 PlayingCols.prototype.addToCol = function (card) {
   let lastCard = this.row.length - 1;
   if (this.row.length === 0) {
@@ -19,11 +21,14 @@ PlayingCols.prototype.addToCol = function (card) {
   }
 }
 
-//creates rows needed for winning
+//Foundation rows which are needed for winning
 function FoundationRows (){
   this.foundationRow = [];
   this.suit = "";
 }
+
+//FoundationRows METHODS
+
 //Starts and defines a row
 FoundationRows.prototype.defineRow = function (card) {
   if (this.foundationRow.length === 0 && card.number === 1) {
@@ -54,11 +59,14 @@ function Card (suit,number,shade){
   this.faceDown = true;
 }
 
-//The card deck
 
+
+//The card deck
 function CardDeck () {
   this.deck = [];
 }
+
+//CardDeck METHODS
 
 //puts 52 card objects into a deck
 
@@ -81,6 +89,19 @@ CardDeck.prototype.initializeDeck = function(){
   }
 }
 
+//shuffles deck
+CardDeck.prototype.shuffle = function (){
+  let currentIndex = this.deck.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -=1;
+    temporaryValue = this.deck[currentIndex];
+    this.deck[currentIndex] = this.deck[randomIndex];
+    this.deck[randomIndex] = temporaryValue;
+  }
+  console.log(this.deck);
+}
+
 //Pushes the cards out onto the board
 function presentCards (playingCol) {
   let lastCard = playingCol.row.length - 1;
@@ -93,6 +114,7 @@ function presentCards (playingCol) {
     }
   }
 }
+
 //puts the game board together
 CardDeck.prototype.startGame = function(){
   //loop to draw random card
@@ -123,40 +145,30 @@ CardDeck.prototype.startGame = function(){
   this.shuffle();
 }
 
-//shuffles deck
-CardDeck.prototype.shuffle = function (){
-  let currentIndex = this.deck.length, temporaryValue, randomIndex;
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -=1;
-    temporaryValue = this.deck[currentIndex];
-    this.deck[currentIndex] = this.deck[randomIndex];
-    this.deck[randomIndex] = temporaryValue;
-  }
-  console.log(this.deck);
-}
-
-
 //Deals cards
 CardDeck.prototype.deal = function(){
   if (this.deck.length === 0) {
-    for (let x = 0; x < player.pile.length; x++){
+    for (let x = 0; x < 24; x++){
       this.deck.push(player.pile[x]);
-      player.pile.splice(x,1);
+    }
+    for (let x = 0; x < 24; x++){
+      player.pile.splice(0,1);
     }
     $('#deck').append("<img class = 'card' src='img/deck-haunted-house.png'  />");
     $('#pile').empty();
   } else {
-  //Pulls a random card from the deck and leaves it in the player's pile
-  this.deck[0].faceDown = false;
-  player.pile.push(this.deck[0]);
-  this.deck.splice(0, 1);
+    //Pulls a random card from the deck and leaves it in the player's pile
+    this.deck[0].faceDown = false;
+    player.pile.push(this.deck[0]);
+    this.deck.splice(0, 1);
 
-  //Displays dealt card to html by appending the appropriate img
-  let lastCard = player.pile.length - 1;
-  player.pile[lastCard].faceDown = false;
-  $('#pile').append("<img class = 'card' id='" + player.pile[lastCard].number + player.pile[lastCard].suit + "' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
-  if (this.deck.length === 0) {$('#deck').empty()};
+    //Displays dealt card to html by appending the appropriate img
+    let lastCard = player.pile.length - 1;
+    player.pile[lastCard].faceDown = false;
+    $('#pile').append("<img class = 'card' id='" + player.pile[lastCard].number + player.pile[lastCard].suit + "' src='img/" + player.pile[lastCard].number + "_of_" + player.pile[lastCard].suit + ".jpeg' draggable='true' ondragstart='drag(event)' />")
+    if (this.deck.length === 0) {
+      $('#deck').empty();
+    }
   }
 }
 
