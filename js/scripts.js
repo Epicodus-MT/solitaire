@@ -107,7 +107,7 @@ CardDeck.prototype.startGame = function(){
     for (let x = 0; x < playingCol.row.length; x++){
       console.log(playingCol.row[x].faceDown);
       if (playingCol.row[x].faceDown === true){
-          $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='cardimg/deck-haunted-house.png' />")
+          $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/deck-haunted-house.png' />")
       } else {
           $('#playingCol' + playingCol.num).append("<img class = 'card' id='" + playingCol.row[x].number + playingCol.row[x].suit +"' src='img/" + playingCol.row[x].number + "_of_" + playingCol.row[x].suit + ".jpeg' draggable='true' ondragstart='drag(event)' ondragstart='drag(event)'  />")
       }
@@ -121,7 +121,7 @@ CardDeck.prototype.startGame = function(){
   presentCards(playingCol5);
   presentCards(playingCol6);
   presentCards(playingCol7);
-  $('#deck').append("<img class = 'card' src='cardimg/deck-haunted-house.png'  />")
+  $('#deck').append("<img class = 'card' src='img/deck-haunted-house.png'  />")
 
 }
 
@@ -146,7 +146,7 @@ CardDeck.prototype.deal = function(){
       this.deck.push(player.pile[x]);
       player.pile.splice(x,1);
     }
-    $('#deck').append("<img class = 'card' src='cardimg/deck-haunted-house.png'  />");
+    $('#deck').append("<img class = 'card' src='img/deck-haunted-house.png'  />");
     $('#pile').empty();
   } else {
   //Pulls a random card from the deck and leaves it in the player's pile

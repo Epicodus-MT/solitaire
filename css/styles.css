@@ -7,7 +7,7 @@ body {
 
 #solitaire-header {
   background-color: #09218D;
-  background-image: url("../img/random-images/solitaire-bar.jpeg");
+  background-image: url("../img/solitaire-bar.jpeg");
   height: 34px;
   width: 100%;
   background-repeat: no-repeat;
@@ -20,32 +20,6 @@ body {
   border-bottom-width: 200px;
 }
 
-
-#fRow1{
-  background-image: url("../img/random-images/foundation-square.jpeg");
-  height: 150px;
-  width: 100px;
-  background-repeat: no-repeat;
-}
-
-#fRow2{
-  background-image: url("../img/random-images/foundation-square.jpeg");
-  height: 150px;
-  width: 100px;
-  background-repeat: no-repeat;
-}
-#fRow3{
-  background-image: url("../img/random-images/foundation-square.jpeg");
-  height: 150px;
-  width: 100px;
-  background-repeat: no-repeat;
-}
-#fRow4{
-  background-image: url("../img/random-images/foundation-square.jpeg");
-  height: 150px;
-  width: 100px;
-  background-repeat: no-repeat;
-}
 .timer {
   background-color: white;
   text-align: right;
@@ -62,19 +36,12 @@ body {
 }
 
 .card {
- width: 100px; height: 150px;
- /*border: 2px solid #333;
- -moz-border-radius: 8px;
- -webkit-border-radius: 8px;
- -khtml-border-radius: 8px;
- border-radius: 8px;
- padding: 2px;*/
- /*text-align: center; font-size: 200%;*/
- /*position: static;*/
+ width: 100px;
+ height: 150px;
 }
 
 #deck {
-  background-image: url("../img/random-images/end-of-deck.jpeg");
+  background-image: url("../img/end-of-deck.jpeg");
   float: left;
   margin-right: 25px;
   margin-left: 50px;
@@ -91,10 +58,35 @@ body {
   background-color: green;
   height: 100px;
   width: 150px;
-  margin-right: 90px;
+  margin-right: 100px;
   float: right;
 }
 
+#fRow1{
+  background-image: url("../img/foundation-square.jpeg");
+  height: 150px;
+  width: 100px;
+  background-repeat: no-repeat;
+}
+
+#fRow2{
+  background-image: url("../img/foundation-square.jpeg");
+  height: 150px;
+  width: 100px;
+  background-repeat: no-repeat;
+}
+#fRow3{
+  background-image: url("../img/foundation-square.jpeg");
+  height: 150px;
+  width: 100px;
+  background-repeat: no-repeat;
+}
+#fRow4{
+  background-image: url("../img/foundation-square.jpeg");
+  height: 150px;
+  width: 100px;
+  background-repeat: no-repeat;
+}
 
 .foundation-row .card:nth-child(n+2) {
   margin-top: -175px;
@@ -139,9 +131,9 @@ body {
 }
 
 .play-row {
-  margin: 50px 10px 50px 50px;
+  margin: 100px 10px 50px 50px;
   float: left;
-  background-image: url("../img/random-images/foundation-square.jpeg");
+  background-image: url("../img/foundation-square.jpeg");
   height: 150px;
   width: 100px;
   background-repeat: no-repeat;
