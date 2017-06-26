@@ -133,6 +133,26 @@ CardDeck.prototype.startGame = function(){
     if (z >= 15 && z <= 20 ) {playingCol6.row.push(pulledCard); }
     if (z >= 21 && z <= 27 ) {playingCol7.row.push(pulledCard); }
   }
+  let deckImg = "<img class = 'card' src='img/deck-haunted-house.png'  />";
+  let hiddenSpan = "<span></span>";
+  let hiddenCard = "<img class = 'card' id='hidecard' src='img/deck-haunted-house.png'  />";
+  let hiddenPlayCard = "<img class = 'card' id='hideplaycard' src='img/deck-haunted-house.png'  />";
+
+
+  $('#deck').append(deckImg);
+  $('#fRow1').append(hiddenCard);
+  $('#fRow2').append(hiddenCard);
+  $('#fRow3').append(hiddenCard);
+  $('#fRow4').append(hiddenCard);
+  $('#playingCol1').append(hiddenPlayCard);
+  $('#playingCol2').append(hiddenPlayCard);
+  $('#playingCol3').append(hiddenPlayCard);
+  $('#playingCol4').append(hiddenPlayCard);
+  $('#playingCol5').append(hiddenPlayCard);
+  $('#playingCol6').append(hiddenPlayCard);
+  $('#playingCol7').append(hiddenPlayCard);
+
+
   presentCards(playingCol1);
   presentCards(playingCol2);
   presentCards(playingCol3);
@@ -140,15 +160,7 @@ CardDeck.prototype.startGame = function(){
   presentCards(playingCol5);
   presentCards(playingCol6);
   presentCards(playingCol7);
-  $('#deck').append("<img class = 'card' src='img/deck-haunted-house.png'  />");
-  this.shuffle();
-  $('#fRow1').append("<img class = 'card' id='hidecard' src='img/deck-haunted-house.png'  />");
-  this.shuffle();
-  $('#fRow2').append("<img class = 'card' id='hidecard'  src='img/deck-haunted-house.png'  />");
-  this.shuffle();
-  $('#fRow3').append("<img class = 'card' id='hidecard'  src='img/deck-haunted-house.png'  />");
-  this.shuffle();
-  $('#fRow4').append("<img class = 'card' id='hidecard' src='img/deck-haunted-house.png'  />");
+
   this.shuffle();
 }
 
@@ -207,25 +219,33 @@ function drop(ev) {
   let data = ev.dataTransfer.getData("text");
   let targetedCol = "#" + ev.currentTarget.id;
   let targetedColClass = ev.currentTarget.className;
-  let classArray = targetedColClass.split(" ");
+  let colClassArray = targetedColClass.split(" ");
   let lastCard = $(targetedCol).children().last().attr('id');
   let lastCardArray = lastCard.split(/(\d+)/g);
   let draggedCardArray = data.split(/(\d+)/g);
-  console.log(classArray[1]);
+  console.log(colClassArray[1]);
   console.log(lastCardArray[0]);
   if (
-    classArray[1] === "play-row" &&
+    colClassArray[1] === "play-row" &&
     lastCardArray[0] !== draggedCardArray[0] &&
     parseInt(lastCardArray[1]) === (parseInt(draggedCardArray[1]) + 1)){
-    ev.currentTarget.appendChild(document.getElementById(data));
+      ev.currentTarget.appendChild(document.getElementById(data));
+      player.pile.pop();
   } else if (
-    classArray[1] === "foundation-row" &&
+    colClassArray[1] === "play-row" &&
+    parseInt(draggedCardArray[1]) === 13 &&
+    lastCardArray[0] === "hideplaycard"
+  ){
+    ev.currentTarget.appendChild(document.getElementById(data));
+    player.pile.pop();
+  }else if (
+    colClassArray[1] === "foundation-row" &&
     lastCardArray[0] === "hidecard" &&
     draggedCardArray[1] === "1"
   ){
     ev.currentTarget.appendChild(document.getElementById(data));
   } else if (
-      classArray[1] === "foundation-row" &&
+      colClassArray[1] === "foundation-row" &&
       lastCardArray[2] === draggedCardArray[2] &&
       parseInt(lastCardArray[1]) === (parseInt(draggedCardArray[1]) - 1)){
       ev.currentTarget.appendChild(document.getElementById(data));
@@ -267,7 +287,7 @@ $(document).ready(function(){
   });
   $('#deck').click(function(){
     solitaire.deal();
-    // console.log(solitaire.deck);
-    // console.log(player.pile);
+    console.log(solitaire.deck);
+    console.log(player.pile);
   });
 });

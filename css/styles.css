@@ -44,6 +44,10 @@ body {
   display: none;
 }
 
+#hideplaycard {
+  display: none;
+}
+
 #deck {
   background-image: url("../img/end-of-deck.jpeg");
   float: left;
@@ -52,6 +56,10 @@ body {
   height: 150px;
   width: 100px;
   background-repeat: no-repeat;
+}
+
+#deck img {
+  margin-left: -25px;
 }
 
 #pile .card {
@@ -94,6 +102,7 @@ body {
 
 .foundation-row .card:nth-child(n+2) {
   margin-top: 0px;
+  margin-left: -15px;
 }
 .foundation-row .card:nth-child(n+3) {
   margin-top: -175px;
@@ -129,13 +138,10 @@ body {
   margin-top: -575px;
 }
 
-.col-md-1.5 {
-  background-color: green;
-  float: right;
-}
+
 
 .play-row {
-  margin: 100px 10px 50px 50px;
+  margin: 100px 20px 10px 30px;
   float: left;
   background-image: url("../img/foundation-square.jpeg");
   height: 150px;
@@ -143,100 +149,86 @@ body {
   background-repeat: no-repeat;
 }
 
+
 .play-row .card:first-child {
   background-color: black;
+
 }
 
 .play-row .card:nth-child(n+2){
   /*background-color: green;*/
-  margin-left: -100px;
-  margin-bottom: -35px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 
 .play-row .card:nth-child(n+3){
   /*background-color: black;*/
-  margin-left: -100px;
-  margin-bottom: -70px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 
 .play-row .card:nth-child(n+4){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -105px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 
 .play-row .card:nth-child(n+5){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -140px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+6){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -175px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+7){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -205px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+8){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -240px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+9){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -275px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+10){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -310px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+11){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -345px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+12){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -380px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+13){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -415px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+14){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -450px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+15){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -485px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+16){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -525px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+17){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -560px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+18){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -595px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
 .play-row .card:nth-child(n+19){
-  background-color: black;
-  margin-left: -100px;
-  margin-bottom: -630px;
+  margin-left: -15px;
+  margin-bottom: -125px;
 }
